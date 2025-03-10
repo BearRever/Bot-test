@@ -120,4 +120,15 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 
-client.login('MTIxNDE4MTc4NzA3MzUxOTYyOQ.GKlLoF.DX4_gMeu8-1yqn5RDKOj0zDq_C-RL83YDMX5CU');
+require("dotenv").config();
+const { Client, GatewayIntentBits } = require("discord.js");
+
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+});
+
+client.once("ready", () => {
+  console.log(`✅ บอทออนไลน์แล้ว! ชื่อบอท: ${client.user.tag}`);
+});
+
+client.login(process.env.DISCORD_TOKEN);
